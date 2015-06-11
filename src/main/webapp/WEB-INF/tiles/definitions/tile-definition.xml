@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software
+Foundation//DTD Tiles Configuration 3.0//EN"
+"http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+    
+    <definition name="systemUser/list" extends="baseLayout">
+        <put-attribute name="title" value="List Users"/>
+        <put-attribute name="heading" value="List Users"/>
+        <put-attribute name="tagline" value="List Users"/>        
+        <put-attribute name="content" value="/WEB-INF/views/systemUser/list.jsp"/>
+    </definition>
+    
+    
+    <definition name="systemUser/edit" extends="baseLayout">
+        <put-attribute name="title" value="Edit User"/>
+        <put-attribute name="heading" value="Edit User"/>
+        <put-attribute name="tagline" value="Edit User"/>        
+        <put-attribute name="content" value="/WEB-INF/views/systemUser/edit.jsp"/>
+    </definition>
+    
+    <definition name="systemUser/add" extends="baseLayout">
+        <put-attribute name="title" value="Create New User"/>
+        <put-attribute name="heading" value="Create User"/>
+        <put-attribute name="tagline" value="Create User"/>        
+        <put-attribute name="content" value="/WEB-INF/views/systemUser/add.jsp"/>
+    </definition>
+    
+    <definition name="baseLayout" template="/WEB-INF/tiles/template/baseLayout.jsp">
+        <put-attribute name="title" value="Layout Title"/>
+        <put-attribute name="heading" value=""/>
+        <put-attribute name="tagline" value=""/>
+        <put-attribute name="navigation" value="/WEB-INF/tiles/template/navigation.jsp"/>
+        <put-attribute name="content" value=""/>
+        <put-attribute name="footer" value="/WEB-INF/tiles/template/footer.jsp"/>        
+    </definition>
+     
+   
+    <definition name="employee/list" extends="baseLayout">
+        <put-attribute name="title" value="List Employee"/>
+        <put-attribute name="heading" value="List Employee"/>
+        <put-attribute name="tagline" value="List Employee"/>        
+        <put-attribute name="content" value="/WEB-INF/views/employee/list.jsp"/>
+    </definition>
+    
+    <definition name="employee/edit" extends="baseLayout">
+        <put-attribute name="title" value="Edit Employee"/>
+        <put-attribute name="heading" value="Edit Employee"/>
+        <put-attribute name="tagline" value="Edit Employee"/>        
+        <put-attribute name="content" value="/WEB-INF/views/employee/edit.jsp"/>
+    </definition>
+    
+    <definition name="employee/add" extends="baseLayout">
+        <put-attribute name="title" value="Create New Employee"/>
+        <put-attribute name="heading" value="Create Employee"/>
+        <put-attribute name="tagline" value="Create Employee"/>        
+        <put-attribute name="content" value="/WEB-INF/views/employee/add.jsp"/>
+    </definition>
+     
+    <definition name="role/list" extends="baseLayout">
+        <put-attribute name="title" value="List Roles"/>
+        <put-attribute name="heading" value="List Roles"/>
+        <put-attribute name="tagline" value="List Roles"/>        
+        <put-attribute name="content" value="/WEB-INF/views/role/list.jsp"/>
+    </definition>
+    
+    <definition name="role/edit" extends="baseLayout">
+        <put-attribute name="title" value="Edit Role"/>
+        <put-attribute name="heading" value="Edit Role"/>
+        <put-attribute name="tagline" value="Edit Role"/>        
+        <put-attribute name="content" value="/WEB-INF/views/role/edit.jsp"/>
+    </definition>
+    
+    <definition name="role/add" extends="baseLayout">
+        <put-attribute name="title" value="Create New Role"/>
+        <put-attribute name="heading" value="Create Role"/>
+        <put-attribute name="tagline" value="Create Role"/>        
+        <put-attribute name="content" value="/WEB-INF/views/role/add.jsp"/>
+    </definition>
+    
+
+    <definition name="home" extends="baseLayout">
+        <put-attribute name="title" value="Home" />
+        <put-attribute name="heading" value="Home" />
+        <put-attribute name="tagline" value="Home" />
+        <put-attribute name="content" value="/WEB-INF/views/home.jsp" />
+    </definition>
+</tiles-definitions>

@@ -1,0 +1,15 @@
+#################
+# Files
+#################
+*.class
+*.classpath
+*.project
+*.settings
+*.springBeans
+nb-configuration.xml
+DispatcherServlet-context.xml
+#################
+# Directories
+#################
+target/
+bin/

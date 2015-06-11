@@ -1,0 +1,15 @@
+INSERT INTO user (enabled, password, username) VALUES (1,'admin', 'admin'); 
+INSERT INTO role (roleName) VALUES ('ROLE_ADMIN'); 
+INSERT INTO role (roleName) VALUES ('PRODUCT_OWNER'); 
+INSERT INTO role (roleName) VALUES ('ROLE_HR'); 
+INSERT INTO role (roleName) VALUES ('ROLE_SCRUMMASTER'); 
+INSERT INTO role (roleName) VALUES ('ROLE_DEVELOPER'); 
+INSERT INTO role (roleName) VALUES ('ROLE_MANAGER'); 
+INSERT INTO role (roleName) VALUES ('ROLE_TESTER'); 
+INSERT INTO userroles(roleId,userId) VALUES(1,1);
+INSERT INTO userroles(roleId,userId) VALUES(2,1);
+INSERT INTO userroles(roleId,userId) VALUES(3,1);
+INSERT INTO userroles(roleId,userId) VALUES(4,1);
+INSERT INTO userroles(roleId,userId) VALUES(5,1);
+INSERT INTO userroles(roleId,userId) VALUES(6,1);
+INSERT INTO userroles(roleId,userId) VALUES(7,1);

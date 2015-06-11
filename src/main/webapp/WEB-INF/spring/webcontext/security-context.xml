@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans   xmlns:security="http://www.springframework.org/schema/security"
+         xmlns="http://www.springframework.org/schema/beans" 
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://www.springframework.org/schema/beans
+	http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+	http://www.springframework.org/schema/security
+	http://www.springframework.org/schema/security/spring-security-3.2.xsd">
+    
+    <security:http auto-config="true" use-expressions="true">
+            
+        <security:intercept-url pattern="/" access="hasAnyRole('ROLE_ADMIN','PRODUCT_OWNER','ROLE_HR','ROLE_SCRUMMASTER','ROLE_DEVELOPER','ROLE_MANAGER','ROLE_TESTER')" />
+        <security:intercept-url pattern="/employee/**" access="hasAnyRole('ROLE_ADMIN','ROLE_HR')" />
+        <security:intercept-url pattern="/roles/**" access="hasAnyRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/systemUsers/**" access="hasAnyRole('ROLE_ADMIN')" />
+        <security:intercept-url pattern="/productBacklog/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SCRUMMASTER')" />
+        <security:intercept-url pattern="/userStory/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SCRUMMASTER')" />
+        <security:intercept-url pattern="/release/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SCRUMMASTER')" />
+        <security:intercept-url pattern="/sprint/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SCRUMMASTER','ROLE_DEVELOPER','ROLE_TESTER')" />
+        <security:intercept-url pattern="/tasks/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SCRUMMASTER','ROLE_DEVELOPER','ROLE_TESTER')" />
+        <security:intercept-url pattern="/burnDownChats/**" access="hasAnyRole('ROLE_ADMIN','ROLE_SCRUMMASTER','ROLE_DEVELOPER','ROLE_TESTER','PRODUCT_OWNER')" />
+
+        <!-- access denied page -->
+        <!--        
+            <intercept-url pattern="/employee" method="GET" access="ROLE_ADMIN" />
+            <intercept-url pattern="/employee" method="POST" access="ROLE_ADMIN" />
+        -->
+        
+        <security:form-login login-page="/login" default-target-url="/" authentication-failure-url="/loginfailed" />
+        <security:logout logout-success-url="/logout" />    
+    </security:http>
+    
+    <security:authentication-manager>
+        <security:authentication-provider>
+            <security:jdbc-user-service data-source-ref="dataSource"
+                                        users-by-username-query="select username, password, enabled from user where username=?"
+                                        authorities-by-username-query="select u.username, r.roleName From user u INNER JOIN userroles ur ON u.userId = ur.userId INNER JOIN role r ON r.roleId = ur.roleId where u.username =?"
+            />
+        </security:authentication-provider>
+    </security:authentication-manager>
+    
+    <bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close" >
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url" value="jdbc:mysql://localhost:3306/mumscrumSecurity" />
+        <property name="username" value="root" />
+        <property name="password" value="" />
+    </bean>
+
+    <bean id="sessionFactory"
+          class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="packagesToScan" value="edu.mum.mscrum.domain" />
+
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.hbm2ddl.auto">update</prop>
+                <prop key="hibernate.dialect">org.hibernate.dialect.MySQLDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+    
+</beans>
